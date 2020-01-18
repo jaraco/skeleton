@@ -85,7 +85,7 @@ The skeleton assumes the developer has [tox](https://pypi.org/project/tox) insta
 
 Other environments (invoked with `tox -e {name}`) supplied include:
 
-  - a `build-docs` environment to build the documentation
+  - a `docs` environment to build the documentation
   - a `release` environment to publish the package to PyPI
 
 A pytest.ini is included to define common options around running tests. In particular:
@@ -103,27 +103,50 @@ Relies on a .flake8 file to correct some default behaviors:
 
 ## Continuous Integration
 
-The project is pre-configured to run tests in [Travis CI](https://travis-ci.org) (.travis.yml). Any new project must be enabled either through their web site or with the `travis enable` command.
+The project is pre-configured to run tests through multiple CI providers.
+
+### Azure Pipelines
+
+[Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) are the preferred provider as they provide free, fast, multi-platform services. See azure-pipelines.yml for more details.
 
 Features include:
 
-- test against Python 2 and 3
+- test against multiple Python versions
+- run on Ubuntu Bionic
+
+### Travis CI
+
+[Travis CI](https://travis-ci.org) is configured through .travis.yml. Any new project must be enabled either through their web site or with the `travis enable` command.
+
+Features include:
+- test against Python 3
 - run on Ubuntu Xenial
 - correct for broken IPv6
 
-Also provided is a minimal template for running under AppVeyor (Windows).
+### Appveyor
+
+A minimal template for running under Appveyor (Windows) is provided.
 
 ### Continuous Deployments
 
-In addition to running tests, an additional deploy stage is configured to automatically release tagged commits to PyPI using [API tokens](https://pypi.org/help/#apitoken). The release process expects an authorized token to be configured with Travis as the TWINE_PASSWORD environment variable. After the Travis project is created, configure the token through the web UI or with a command like the following (bash syntax):
+In addition to running tests, an additional deploy stage is configured to automatically release tagged commits to PyPI using [API tokens](https://pypi.org/help/#apitoken). The release process expects an authorized token to be configured with Azure as the `Azure secrets` variable group. This variable group needs to be created only once per organization. For example:
 
 ```
-TWINE_PASSWORD={token} travis env copy TWINE_PASSWORD
+# create a resource group if none exists
+az group create --name main --location eastus2
+# create the vault (try different names until something works)
+az keyvault create --name secrets007 --resource-group main
+# create the secret
+az keyvault secret set --vault-name secrets007 --name PyPI-token --value $token
 ```
+
+Then, in the web UI for the project's Pipelines Library, create the `Azure secrets` variable group referencing the key vault name.
+
+For more details, see [this blog entry](https://blog.jaraco.com/configuring-azure-pipelines-with-secets/).
 
 ## Building Documentation
 
-Documentation is automatically built by [Read the Docs](https://readthedocs.org) when the project is registered with it, by way of the .readthedocs.yml file. To test the docs build manually, a tox env may be invoked as `tox -e build-docs`. Both techniques rely on the dependencies declared in `setup.cfg/options.extras_require.docs`.
+Documentation is automatically built by [Read the Docs](https://readthedocs.org) when the project is registered with it, by way of the .readthedocs.yml file. To test the docs build manually, a tox env may be invoked as `tox -e docs`. Both techniques rely on the dependencies declared in `setup.cfg/options.extras_require.docs`.
 
 In addition to building the Sphinx docs scaffolded in `docs/`, the docs build a `history.html` file that first injects release dates and hyperlinks into the CHANGES.rst before incorporating it as history in the docs.
 
