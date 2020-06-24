@@ -2,8 +2,8 @@ dist: bionic
 language: python
 
 python:
-- 3.6
-- &latest_py3 3.8
+- 3.8
+- &latest_py3 3.9-dev
 
 cache: pip
 
