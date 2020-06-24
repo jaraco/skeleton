@@ -3,7 +3,6 @@ environment:
   APPVEYOR: true
 
   matrix:
-    - PYTHON: "C:\\Python36-x64"
     - PYTHON: "C:\\Python38-x64"
     - PYTHON: "C:\\Python39-x64"
 
