@@ -1,10 +1,10 @@
 # Overview
 
-This project is merged with [skeleton](https://github.com/jaraco/skeleton). What is skeleton? It's the scaffolding of a Python project jaraco [introduced in his blog](https://blog.jaraco.com/a-project-skeleton-for-python-projects/). It seeks to provide a means to re-use techniques and inherit advances when managing projects for distribution.
+This project is merged with [python-libcat/skeleton](https://github.com/python-libcat/skeleton). What is skeleton? It's the scaffolding of a Python project jaraco [introduced in his blog](https://blog.jaraco.com/a-project-skeleton-for-python-projects/). It seeks to provide a means to re-use techniques and inherit advances when managing projects for distribution.
 
 ## An SCM-Managed Approach
 
-While maintaining dozens of projects in PyPI, jaraco derives best practices for project distribution and publishes them in the [skeleton repo](https://github.com/jaraco/skeleton), a Git repo capturing the evolution and culmination of these best practices.
+While maintaining dozens of projects in PyPI, python-libcat derives best practices for project distribution and publishes them in the [skeleton repo](https://github.com/jaraco/skeleton), a Git repo capturing the evolution and culmination of these best practices.
 
 It's intended to be used by a new or existing project to adopt these practices and honed and proven techniques. Adopters are encouraged to use the project directly and maintain a small deviation from the technique, make their own fork for more substantial changes unique to their environment or preferences, or simply adopt the skeleton once and abandon it thereafter.
 
@@ -21,7 +21,7 @@ To use skeleton for a new project, simply pull the skeleton into a new project:
 ```
 $ git init my-new-project
 $ cd my-new-project
-$ git pull gh://jaraco/skeleton
+$ git pull gh://python-libcat/skeleton
 ```
 
 Now customize the project to suit your individual project needs.
@@ -49,7 +49,7 @@ The features/techniques employed by the skeleton include:
 - PEP 517/518-based build relying on Setuptools as the build tool
 - Setuptools declarative configuration using setup.cfg
 - tox for running tests
-- A README.rst as reStructuredText with some popular badges, but with Read the Docs and AppVeyor badges commented out
+- A README.rst as reStructuredText with some popular badges
 - A CHANGES.rst file intended for publishing release notes about the project
 - Use of [Black](https://black.readthedocs.io/en/stable/) for code formatting (disabled on unsupported Python 3.5 and earlier)
 
@@ -105,15 +105,6 @@ Relies on a .flake8 file to correct some default behaviors:
 
 The project is pre-configured to run tests through multiple CI providers.
 
-### Azure Pipelines
-
-[Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) are the preferred provider as they provide free, fast, multi-platform services. See azure-pipelines.yml for more details.
-
-Features include:
-
-- test against multiple Python versions
-- run on Ubuntu Bionic
-
 ### Travis CI
 
 [Travis CI](https://travis-ci.org) is configured through .travis.yml. Any new project must be enabled either through their web site or with the `travis enable` command.
@@ -126,23 +117,6 @@ Features include:
 ### AppVeyor
 
 A minimal template for running under AppVeyor (Windows) is provided.
-
-### Continuous Deployments
-
-In addition to running tests, an additional deploy stage is configured to automatically release tagged commits to PyPI using [API tokens](https://pypi.org/help/#apitoken). The release process expects an authorized token to be configured with Azure as the `Azure secrets` variable group. This variable group needs to be created only once per organization. For example:
-
-```
-# create a resource group if none exists
-az group create --name main --location eastus2
-# create the vault (try different names until something works)
-az keyvault create --name secrets007 --resource-group main
-# create the secret
-az keyvault secret set --vault-name secrets007 --name PyPI-token --value $token
-```
-
-Then, in the web UI for the project's Pipelines Library, create the `Azure secrets` variable group referencing the key vault name.
-
-For more details, see [this blog entry](https://blog.jaraco.com/configuring-azure-pipelines-with-secets/).
 
 ## Building Documentation
 
