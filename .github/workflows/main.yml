@@ -18,6 +18,8 @@ jobs:
       - name: Install tox
         run: |
           python -m pip install tox
+      - name: Initialize tox
+        run: python -m tox --notest
       - name: Run tests
         run: tox
 
