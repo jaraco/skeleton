@@ -1,6 +1,9 @@
 [flake8]
 max-line-length = 88
-max-complexity = 10  # jaraco/skeleton#34
+
+# jaraco/skeleton#34
+max-complexity = 10
+
 extend-ignore =
 	# Black creates whitespace before colon
 	E203
