@@ -165,3 +165,44 @@ Releases may also be cut manually by invoking the tox environment `release` with
 ```
 TWINE_PASSWORD={token} tox -e release
 ```
+
+## Ignoring Artifacts
+
+This project does not include a `.gitignore` module. That's because this project assumes the philosophy that it's preferable to specify ignores at the most relevant level, and so .gitignore for a project should specify elements unique to _that project_ and not elements peculiar to the language or system or user.
+
+Instead, skeleton recommends users to implement ignores for the language(s), system, and user in the development environment. For example, jaraco has the following in `~/.gitconfig`:
+
+```
+[core]
+  excludesfile = /Users/jaraco/.gitignore_global
+```
+
+And in the `.gitignore_global`, something like the following:
+
+```
+*~
+.DS_Store
+.cache
+.eggs
+__pycache__
+build
+dist
+*.egg-info
+.tox
+.xprocess
+*.orig
+*.pyc
+node_modules
+.mypy_cache
+.pytest_cache
+.env
+.coverage
+pip-wheel-metadata
+.coverage.*
+.idea
+coverage.xml
+```
+
+As you can see, this file contains all of the commonly encountered ignorables when developing node.js and Python projects using PyCharm or emacs or git on a Mac. This simple configuration, linked in each development environment, avoids the need to configure (and sync) each downstream project with the aggregate configuration of jaraco's environments and the environments of each of the contributors to each of the projects the contributiors may touch.
+
+It's not a perfect alignment of concerns to projects, but it's a dramatically simpler approach saving hundreds of commits that can be readily adopted by any user and is recommended for skeleton-based projects.
