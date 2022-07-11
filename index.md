@@ -93,14 +93,13 @@ The setup.cfg file implements the following features:
 - Data files in the package are also included (not just Python files)
 - Declares the required Python versions
 - Declares install requirements (empty by default)
-- Declares setup requirements for legacy environments
 - Supplies two 'extras':
   - testing: requirements for running tests
   - docs: requirements for building docs
   - these extras split the declaration into "upstream" (requirements as declared by the skeleton) and "local" (those specific to the local project); these markers help avoid merge conflicts
 - Placeholder for defining entry points
 
-Additionally, the setup.py file declares `use_scm_version` which relies on [setuptools_scm](https://pypi.org/project/setuptools_scm) to do two things:
+Additionally, the pyproject.toml file declares `[tool.setuptools_scm]`, which enables [setuptools_scm](https://pypi.org/project/setuptools_scm) to do two things:
 
 - derive the project version from SCM tags
 - ensure that all files committed to the repo are automatically included in releases
@@ -124,7 +123,6 @@ A pytest.ini is included to define common options around running tests. In parti
 
 Relies on a .flake8 file to correct some default behaviors:
 
-- disable mutually incompatible rules W503 and W504
 - support for Black format
 
 ## Continuous Integration
