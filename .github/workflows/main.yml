@@ -3,20 +3,30 @@ name: tests
 on: [push, pull_request]
 
 env:
-  FORCE_COLOR: 1  # Request colored output from CLI tools supporting it
-  MYPY_FORCE_COLOR: 1  # MyPy's color enforcement
-  PIP_DISABLE_PIP_VERSION_CHECK: 1
-  PIP_NO_PYTHON_VERSION_WARNING: 1
-  PIP_NO_WARN_SCRIPT_LOCATION: 1
-  PY_COLORS: 1  # Recognized by the `py` package, dependency of `pytest`
-  TOX_PARALLEL_NO_SPINNER: 1
-  TOX_TESTENV_PASSENV: >-  # Make tox-wrapped tools see color requests
+  # Environment variables to support color support (jaraco/skeleton#66):
+  # Request colored output from CLI tools supporting it
+  FORCE_COLOR: 1
+  # MyPy's color enforcement
+  MYPY_FORCE_COLOR: 1
+  # Recognized by the `py` package, dependency of `pytest`
+  PY_COLORS: 1
+  # Make tox-wrapped tools see color requests
+  TOX_TESTENV_PASSENV: >-
     FORCE_COLOR
     MYPY_FORCE_COLOR
     NO_COLOR
     PY_COLORS
     PYTEST_THEME
     PYTEST_THEME_MODE
+
+  # Suppress noisy pip warnings
+  PIP_DISABLE_PIP_VERSION_CHECK: 1
+  PIP_NO_PYTHON_VERSION_WARNING: 1
+  PIP_NO_WARN_SCRIPT_LOCATION: 1
+
+  # Disable the spinner, noise in GHA; TODO(webknjaz): Fix this upstream
+  TOX_PARALLEL_NO_SPINNER: 1
+
 
 jobs:
   test:
