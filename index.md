@@ -118,7 +118,6 @@ A pytest.ini is included to define common options around running tests. In parti
 - rely on default test discovery in the current directory
 - avoid recursing into common directories not containing tests
 - run doctests on modules and invoke Flake8 tests
-- in doctests, allow Unicode literals and regular literals to match, allowing for doctests to run on Python 2 and 3. Also enable ELLIPSES, a default that would be undone by supplying the prior option.
 - filters out known warnings caused by libraries/functionality included by the skeleton
 
 Relies on a .flake8 file to correct some default behaviors:
