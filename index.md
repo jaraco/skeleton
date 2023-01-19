@@ -6,11 +6,11 @@ This project is merged with [skeleton](https://github.com/jaraco/skeleton). What
 
 While maintaining dozens of projects in PyPI, jaraco derives best practices for project distribution and publishes them in the [skeleton repo](https://github.com/jaraco/skeleton), a Git repo capturing the evolution and culmination of these best practices.
 
-It's intended to be used by a new or existing project to adopt these practices and honed and proven techniques. Adopters are encouraged to use the project directly and maintain a small deviation from the technique, make their own fork for more substantial changes unique to their environment or preferences, or simply adopt the skeleton once and abandon it thereafter.
+It's intended to be used by a new or existing project to adopt these practices and honed and proven techniques. Adopters are encouraged to use the project directly and maintain a small deviation from the technique, make their own fork for more substantial changes unique to their environment or preferences, simply adopt the skeleton once and abandon it thereafter, or use it as a reference from which to cherry-pick ideas.
 
 The primary advantage to using an SCM for maintaining these techniques is that those tools help facilitate the merge between the template and its adopting projects.
 
-Another advantage to using an SCM-managed approach is that tools like GitHub recognize that a change in the skeleton is the _same change_ across all projects that merge with that skeleton. Without the ancestry, with a traditional copy/paste approach, a [commit like this](https://github.com/jaraco/skeleton/commit/12eed1326e1bc26ce256e7b3f8cd8d3a5beab2d5) would produce notifications in the upstream project issue for each and every application, but because it's centralized, GitHub provides just the one notification when the change is added to the skeleton.
+Another advantage to using an SCM-managed approach is that tools like GitHub recognize that a change in the skeleton is the _same change_ across all projects that merge with that skeleton. Without the ancestry, with a traditional copy/paste approach, a [commit like this](https://github.com/jaraco/skeleton/commit/12eed1326e1bc26ce256e7b3f8cd8d3a5beab2d5) would produce notifications in the upstream project issue for each and every application, but because it's centralized, GitHub provides just the one notification when the change (and its commit hash) is added to the skeleton.
 
 # Usage
 
@@ -28,13 +28,13 @@ Now customize the project to suit your individual project needs.
 
 ## existing projects
 
-If you have an existing project, you can still incorporate the skeleton by merging it into the codebase.
+If starting from an existing project, incorporate the skeleton by merging it into the codebase.
 
 ```
 $ git merge skeleton --allow-unrelated-histories
 ```
 
-The `--allow-unrelated-histories` is necessary because the history from the skeleton was previously unrelated to the existing codebase. Resolve any merge conflicts and commit to the master, and now the project is based on the shared skeleton.
+The `--allow-unrelated-histories` is necessary on the first merge because the history from the skeleton was previously unrelated to the existing codebase. Resolve any merge conflicts and commit to the master, and thereafter the project is based on the shared skeleton.
 
 ## Updating
 
@@ -73,11 +73,11 @@ The features/techniques employed by the skeleton include:
 - PEP 517/518-based build relying on Setuptools as the build tool
 - Setuptools declarative configuration using setup.cfg
 - tox for running tests
-- A README.rst as reStructuredText with some popular badges, but with Read the Docs and AppVeyor badges commented out
+- A README.rst as reStructuredText with some popular badges, but with Read the Docs badges commented out
 - A CHANGES.rst file intended for publishing release notes about the project
 - Use of [Black](https://black.readthedocs.io/en/stable/) for code formatting (disabled on unsupported Python 3.5 and earlier)
-- Integrated type checking through [mypy](https://github.com/python/mypy/).
-- Dependabot enabled to enable supply chain security.
+- Integrated type checking through [mypy](https://github.com/python/mypy/)
+- Dependabot enabled to enable supply chain security
 
 ## Packaging Conventions
 
@@ -165,7 +165,7 @@ TWINE_PASSWORD={token} tox -e release
 
 ## Ignoring Artifacts
 
-This project does not include a `.gitignore` module. That's because this project assumes the philosophy that it's preferable to specify ignores at the most relevant level, and so .gitignore for a project should specify elements unique to _that project_ and not elements peculiar to the language or system or user.
+This project does not include a `.gitignore` module because this project holds the philosophy that it's preferable to specify ignores at the most relevant level, and so .gitignore for a project should specify elements unique to _that project_ and not elements peculiar to the language or system or user.
 
 Instead, skeleton recommends users to implement ignores for the language(s), system, and user in the development environment. For example, jaraco has the following in `~/.gitconfig`:
 
