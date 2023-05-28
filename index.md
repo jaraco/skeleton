@@ -26,6 +26,13 @@ $ git pull gh://jaraco/skeleton
 
 Now customize the project to suit your individual project needs.
 
+In particular, make some replacements:
+
+- `PROJECT`: name of the project in PYPI
+- `PROJECT_PATH`: org/name of the project in Github
+- `PROJECT_DESCRIPTION`: a description of the project
+- `PROJECT_RTD`: (optional) the RTD-mangled name of the project
+
 ## existing projects
 
 If starting from an existing project, incorporate the skeleton by merging it into the codebase.
