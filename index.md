@@ -115,6 +115,16 @@ Additionally, the pyproject.toml file declares `[tool.setuptools_scm]`, which en
 
 The skeleton assumes the developer has [tox](https://pypi.org/project/tox) installed. The developer is expected to run `tox` to run tests on the current Python version using [pytest](https://pypi.org/project/pytest).
 
+The test suite is configured not only to run the project's tests as discovered by pytest, but also includes several plugins to perform other checks:
+
+- `pytest-ruff` performs lint checks using [ruff](https://github.com/astral-sh/ruff)
+- `pytest-black` checks that the style conforms to [black](https://pypi.org/project/black/)
+- `pytest-mypy` performs type checks using [mypy](https://github.com/python/mypy)
+- `pytest-checkdocs` ensures that the README renders without errors
+- `pytest-cov` reports the coverage of the project
+
+Many of these plugins are enabled through `pytest-enabler` to allow easy disablement of any one of them. Simply pass `-p no:{plugin}` (e.g. `-p no:cov`) to pytest (e.g. `tox -- -p no:cov`) to disable the plugin for that run.
+
 Other environments (invoked with `tox -e {name}`) supplied include:
 
   - a `docs` environment to build the documentation
@@ -124,12 +134,8 @@ A pytest.ini is included to define common options around running tests. In parti
 
 - rely on default test discovery in the current directory
 - avoid recursing into common directories not containing tests
-- run doctests on modules and invoke Flake8 tests
+- run doctests on modules and invoke Ruff tests
 - filters out known warnings caused by libraries/functionality included by the skeleton
-
-Relies on a .flake8 file to correct some default behaviors:
-
-- support for Black format
 
 ## Continuous Integration
 
