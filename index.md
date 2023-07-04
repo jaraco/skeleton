@@ -72,6 +72,7 @@ The archive and handoff branches from prior collapses are indicate here:
 | refresh | archive         | handoff      |
 |---------|-----------------|--------------|
 | 2020-12 | archive/2020-12 | 2020-handoff |
+| 2023-07 | archive/2023-07 | 2023-handoff |
 
 # Features
 
