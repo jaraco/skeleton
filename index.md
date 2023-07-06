@@ -51,6 +51,8 @@ For example, here's a session of the [path project](https://pypi.org/project/pat
 
 <img src="https://raw.githubusercontent.com/jaraco/skeleton/gh-pages/docs/refresh.svg">
 
+Additionally, the author maintains a [routine to mechanically apply](https://github.com/jaraco/jaraco.develop/blob/main/jaraco/develop/update-projects.py) the changes from the skeleton or other "upstream" bases.
+
 Thereafter, the target project can make whatever customizations it deems relevant to the scaffolding. The project may even at some point decide that the divergence is too great to merit renewed merging with the original skeleton. This approach applies maximal guidance while creating minimal constraints.
 
 ## Periodic Collapse
