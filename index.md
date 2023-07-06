@@ -12,6 +12,8 @@ The primary advantage to using an SCM for maintaining these techniques is that t
 
 Another advantage to using an SCM-managed approach is that tools like GitHub recognize that a change in the skeleton is the _same change_ across all projects that merge with that skeleton. Without the ancestry, with a traditional copy/paste approach, a [commit like this](https://github.com/jaraco/skeleton/commit/12eed1326e1bc26ce256e7b3f8cd8d3a5beab2d5) would produce notifications in the upstream project issue for each and every application, but because it's centralized, GitHub provides just the one notification when the change (and its commit hash) is added to the skeleton.
 
+Yet another advantage is the ability to manage common concerns in a common repo. Concerns that apply to the best practices or other concerns managed by skeleton can be filed, tracked, and resolved in the skeleton issue tracker.
+
 # Usage
 
 ## new projects
@@ -72,6 +74,12 @@ This handoff needs to be pulled just once and thereafter the project can pull fr
 Here's what the tree looks like following a handoff:
 
 <img src="https://raw.githubusercontent.com/jaraco/skeleton/gh-pages/docs/handoff.png">
+
+The `update-projects` routine may be used to apply this project to existing projects:
+
+```
+py -m jaraco.develop.update-projects --branch 2023-handoff
+```
 
 The archive and handoff branches from prior collapses are indicate here:
 
@@ -223,3 +231,35 @@ coverage.xml
 As you can see, this file contains all of the commonly encountered ignorables when developing node.js and Python projects using PyCharm or emacs or git on a Mac. This simple configuration, linked in each development environment, avoids the need to configure (and sync) each downstream project with the aggregate configuration of jaraco's environments and the environments of each of the contributors to each of the projects the contributiors may touch.
 
 It's not a perfect alignment of concerns to projects, but it's a dramatically simpler approach saving hundreds of commits that can be readily adopted by any user and is recommended for skeleton-based projects.
+
+# Challenges
+
+Because this approach applies concerns across repos, it does violate some assumptions leading to undesirable outcomes.
+
+
+## History is Forever
+
+The history accumulates and each project that adopts it gets the full history. Even a brand new project will get commits going back as far as the main history goes. As a result, cruft accumulates and multiplies across projects.
+
+The Periodic Collapse mentioned above attempts to alleviate this pressure by occasionally (rarely) collapsing the history, but this approach adds its own downsides:
+
+- the true history is obscured
+- existing histories are broken until the handoff commit is pulled
+- attribution is lost
+
+
+## Continuous Integration Mismatch
+
+Because CI instructions for "best practices" are stored in the repo, it's not possible to supply CI instructions for both:
+
+- downstream projects, and
+- the skeleton itself.
+
+Best case, the tests in the skeleton repo are degenerate and pass. Worst case, the tests fail because they rely on factors expected to be supplied downstream (e.g. doc builds currently fail because they rely on the root package name being supplied to be documented).
+
+Moreover, it's not viable to test aspects specific to the skeleton that should not appear/apply downstream, such as to check that commit messages in the skeleton meet certain criteria.
+
+
+## Commit Integrations Mismatch
+
+Github has some nice features to link mentions in commits to issues and pull requests, including taking actions such as closing issues. When applying commits from the skeleton that mention fixing a common concern can [unintentionally affect downstream projects](https://github.com/jaraco/skeleton/issues/87) unless the committer is careful to use project-absolute references (e.g. "jaraco/skeleton#27" vs. "#27").
