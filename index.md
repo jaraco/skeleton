@@ -67,6 +67,10 @@ $ git pull https://github.com/jaraco/skeleton 2020-handoff
 
 This handoff needs to be pulled just once and thereafter the project can pull from the main head.
 
+Here's what the tree looks like following a handoff:
+
+<img src="https://raw.githubusercontent.com/jaraco/skeleton/gh-pages/docs/handoff.png">
+
 The archive and handoff branches from prior collapses are indicate here:
 
 | refresh | archive         | handoff      |
