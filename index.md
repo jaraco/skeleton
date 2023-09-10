@@ -1,6 +1,6 @@
 # Overview
 
-This project is merged with [skeleton](https://github.com/jaraco/skeleton). What is skeleton? It's the scaffolding of a Python project jaraco [introduced in his blog](https://blog.jaraco.com/a-project-skeleton-for-python-projects/). It seeks to provide a means to re-use techniques and inherit advances when managing projects for distribution.
+This project is merged with [skeleton](https://github.com/jaraco/skeleton). What is skeleton? It's the scaffolding of a Python project jaraco [introduced in this blog](https://blog.jaraco.com/a-project-skeleton-for-python-projects/). It seeks to provide a means to re-use techniques and inherit advances when managing projects for distribution.
 
 ## An SCM-Managed Approach
 
@@ -143,9 +143,10 @@ Many of these plugins are enabled through `pytest-enabler` to allow easy disable
 
 Other environments (invoked with `tox -e {name}`) supplied include:
 
-  - a `docs` environment to build the documentation
-  - a `release` environment to publish the package to PyPI
   - a `diffcov` environment to check coverage against `main`
+  - a `docs` environment to build the documentation
+  - a `finalize` environment to assemble changelog and tag a release
+  - a `release` environment to publish the package to PyPI
 
 A pytest.ini is included to define common options around running tests. In particular:
 
