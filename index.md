@@ -141,12 +141,7 @@ The test suite is configured not only to run the project's tests as discovered b
 
 Many of these plugins are enabled through `pytest-enabler` to allow easy disablement of any one of them. Simply pass `-p no:{plugin}` (e.g. `-p no:cov`) to pytest (e.g. `tox -- -p no:cov`) to disable the plugin for that run.
 
-Other environments (invoked with `tox -e {name}`) supplied include:
-
-  - a `diffcov` environment to check coverage against `main`
-  - a `docs` environment to build the documentation
-  - a `finalize` environment to assemble changelog and tag a release
-  - a `release` environment to publish the package to PyPI
+Other environments (invoked with `tox -e {name}`) are available. Use `tox list` for a description of each.
 
 A pytest.ini is included to define common options around running tests. In particular:
 
