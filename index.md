@@ -97,9 +97,10 @@ The features/techniques employed by the skeleton include:
 - tox for running tests
 - A README.rst as reStructuredText with some popular badges, but with Read the Docs badges commented out
 - A CHANGES.rst file intended for publishing release notes about the project
-- Use of [Black](https://black.readthedocs.io/en/stable/) for code formatting (disabled on unsupported Python 3.5 and earlier)
+- Use of [Black](https://black.readthedocs.io/en/stable/) for consistent style
 - Integrated type checking through [mypy](https://github.com/python/mypy/)
 - Dependabot enabled to enable supply chain security
+- Use of [diff-cover](https://pypi.org/project/diff-cover) to encourage test coverage
 
 ## Packaging Conventions
 
@@ -144,6 +145,7 @@ Other environments (invoked with `tox -e {name}`) supplied include:
 
   - a `docs` environment to build the documentation
   - a `release` environment to publish the package to PyPI
+  - a `diffcov` environment to check coverage against `main`
 
 A pytest.ini is included to define common options around running tests. In particular:
 
