@@ -1,5 +1,11 @@
 [lint]
+extend-select = [
+	"UP",  # https://docs.astral.sh/ruff/rules/#pyupgrade-up
+]
 extend-ignore = [
+	# https://docs.astral.sh/ruff/rules/redundant-open-modes/
+	# Prefer explicit to implicit open modes
+	"UP015",
 	# https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules
 	"W191",
 	"E111",
