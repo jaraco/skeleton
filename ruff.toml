@@ -1,5 +1,6 @@
 [lint]
 extend-select = [
+	"I",   # https://docs.astral.sh/ruff/rules/#isort-i
 	"UP",  # https://docs.astral.sh/ruff/rules/#pyupgrade-up
 ]
 extend-ignore = [
