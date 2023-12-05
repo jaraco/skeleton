@@ -7,6 +7,6 @@ disable_warnings =
 
 [report]
 show_missing = True
-exclude_lines =
+exclude_also =
 	@overload
 	if TYPE_CHECKING:
