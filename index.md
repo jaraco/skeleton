@@ -97,7 +97,7 @@ The features/techniques employed by the skeleton include:
 - tox for running tests
 - A README.rst as reStructuredText with some popular badges, but with Read the Docs badges commented out
 - A CHANGES.rst file intended for publishing release notes about the project
-- Use of [Black](https://black.readthedocs.io/en/stable/) for consistent style
+- Use of [Ruff](https://github.com/astral-sh/ruff) for linting and formatting
 - Integrated type checking through [mypy](https://github.com/python/mypy/)
 - Dependabot enabled to enable supply chain security
 - Use of [diff-cover](https://pypi.org/project/diff-cover) to encourage test coverage
