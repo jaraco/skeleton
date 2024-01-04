@@ -1,4 +1,3 @@
-[lint]
 ignore = [
 	# https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules
 	"W191",
