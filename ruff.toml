@@ -18,5 +18,6 @@ ignore = [
 ]
 
 [format]
+preview = true
 # https://docs.astral.sh/ruff/settings/#format-quote-style
 quote-style = "preserve"
