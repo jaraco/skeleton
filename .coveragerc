@@ -7,6 +7,5 @@ disable_warnings =
 
 [report]
 show_missing = True
-exclude_lines = 
-    pragma: no cover
+exclude_also = 
     if TYPE_CHECKING:
