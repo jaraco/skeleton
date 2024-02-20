@@ -133,8 +133,7 @@ The skeleton assumes the developer has [tox](https://pypi.org/project/tox) insta
 
 The test suite is configured not only to run the project's tests as discovered by pytest, but also includes several plugins to perform other checks:
 
-- `pytest-ruff` performs lint checks using [ruff](https://github.com/astral-sh/ruff)
-- `pytest-black` checks that the style conforms to [black](https://pypi.org/project/black/)
+- `pytest-ruff` performs lint and formatting checks using [ruff](https://github.com/astral-sh/ruff)
 - `pytest-mypy` performs type checks using [mypy](https://github.com/python/mypy)
 - `pytest-checkdocs` ensures that the README renders without errors
 - `pytest-cov` reports the coverage of the project
