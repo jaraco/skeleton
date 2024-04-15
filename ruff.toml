@@ -1,3 +1,6 @@
+# keep in sync with `options.requires-python` in `setup.cfg`
+target-version = "py38"
+
 [lint]
 extend-select = [
 	"C901",
