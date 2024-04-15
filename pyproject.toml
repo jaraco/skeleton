@@ -12,7 +12,10 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
 ]
+requires-python = ">=3.8"
 dynamic = ["version"]
+dependencies = [
+]
 
 [project.urls]
 Homepage = "https://github.com/PROJECT_PATH"
