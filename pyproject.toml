@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=56", "setuptools_scm[toml]>=3.4.1"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "PROJECT"
 authors = [
@@ -44,9 +48,5 @@ docs = [
 Homepage = "https://github.com/PROJECT_PATH"
 
 [project.scripts]
-
-[build-system]
-requires = ["setuptools>=56", "setuptools_scm[toml]>=3.4.1"]
-build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
