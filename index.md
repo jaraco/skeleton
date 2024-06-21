@@ -117,8 +117,8 @@ The setup.cfg file implements the following features:
 - Declares the required Python versions
 - Declares install requirements (empty by default)
 - Supplies two 'extras':
-  - testing: requirements for running tests
-  - docs: requirements for building docs
+  - test: requirements for running tests
+  - doc: requirements for building docs
   - these extras split the declaration into "upstream" (requirements as declared by the skeleton) and "local" (those specific to the local project); these markers help avoid merge conflicts
 - Placeholder for defining entry points
 
