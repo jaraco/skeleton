@@ -116,10 +116,10 @@ The setup.cfg file implements the following features:
 - Data files in the package are also included (not just Python files)
 - Declares the required Python versions
 - Declares install requirements (empty by default)
-- Supplies two 'extras':
+- Supplies two sets of "optional dependencies":
   - test: requirements for running tests
   - doc: requirements for building docs
-  - these extras split the declaration into "upstream" (requirements as declared by the skeleton) and "local" (those specific to the local project); these markers help avoid merge conflicts
+  - these dependencies (sometimes called "extras") split the declaration into "upstream" (requirements as declared by the skeleton) and "local" (those specific to the local project); these markers help avoid merge conflicts
 - Placeholder for defining entry points
 
 Additionally, the pyproject.toml file declares `[tool.setuptools_scm]`, which enables [setuptools_scm](https://pypi.org/project/setuptools_scm) to do two things:
@@ -175,7 +175,7 @@ pip-run jaraco.develop -- -m jaraco.develop.add-github-secrets
 
 ## Building Documentation
 
-Documentation is automatically built by [Read the Docs](https://readthedocs.org) when the project is registered with it, by way of the .readthedocs.yml file. To test the docs build manually, a tox env may be invoked as `tox -e docs`. Both techniques rely on the dependencies declared in `setup.cfg/options.extras_require.docs`.
+Documentation is automatically built by [Read the Docs](https://readthedocs.org) when the project is registered with it, by way of the .readthedocs.yml file. To test the docs build manually, a tox env may be invoked as `tox -e docs`. Both techniques rely on the dependencies declared in `pyproject.toml/project.optional-dependencies.doc`.
 
 In addition to building the Sphinx docs scaffolded in `docs/`, the docs build a `history.html` file that first injects release dates and hyperlinks into the CHANGES.rst before incorporating it as history in the docs.
 
