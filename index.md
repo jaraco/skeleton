@@ -93,7 +93,7 @@ The archive and handoff branches from prior collapses are indicate here:
 The features/techniques employed by the skeleton include:
 
 - PEP 517/518-based build relying on Setuptools as the build tool
-- Setuptools declarative configuration using setup.cfg
+- Setuptools declarative configuration using pyproject.toml
 - tox for running tests
 - A README.rst as reStructuredText with some popular badges, but with Read the Docs badges commented out
 - A CHANGES.rst file intended for publishing release notes about the project
@@ -104,12 +104,9 @@ The features/techniques employed by the skeleton include:
 
 ## Packaging Conventions
 
-A pyproject.toml is included to enable PEP 517 and PEP 518 compatibility and declares the requirements necessary to build the project on Setuptools (a minimum version compatible with setup.cfg declarative config).
+A pyproject.toml is included and implements the following features:
 
-The setup.cfg file implements the following features:
-
-- Assumes universal wheel for release
-- Advertises the project's LICENSE file (MIT by default)
+- Enable PEP 517 and PEP 518 to build the project on Setuptools.
 - Reads the README.rst file into the long description
 - Some common Trove classifiers
 - Includes all packages discovered in the repo
