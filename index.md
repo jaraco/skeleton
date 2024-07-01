@@ -194,38 +194,14 @@ Instead, skeleton recommends users to implement ignores for the language(s), sys
 
 ```
 [core]
-  excludesfile = /Users/jaraco/.gitignore_global
+  excludesfile = ~/.gitignore_global
 ```
 
-And in the `.gitignore_global`, something like the following:
+Referencing this [`.gitignore_global`](https://github.com/jaraco/dotfiles/blob/main/.gitignore_global).
 
-```
-*~
-.DS_Store
-.cache
-.eggs
-__pycache__
-build
-dist
-*.egg-info
-.tox
-.xprocess
-*.orig
-*.pyc
-node_modules
-.mypy_cache
-.pytest_cache
-.env
-.coverage
-pip-wheel-metadata
-.coverage.*
-.idea
-coverage.xml
-```
+As you can see, this file contains all of the commonly encountered ignorables when developing node.js and Python projects using PyCharm or emacs or git on all the common platforms. This simple configuration, linked in each development environment, avoids the need to configure (and sync) each downstream project with the aggregate configuration of jaraco's environments and the environments of each of the contributors to each of the projects the contributiors may touch.
 
-As you can see, this file contains all of the commonly encountered ignorables when developing node.js and Python projects using PyCharm or emacs or git on a Mac. This simple configuration, linked in each development environment, avoids the need to configure (and sync) each downstream project with the aggregate configuration of jaraco's environments and the environments of each of the contributors to each of the projects the contributiors may touch.
-
-It's not a perfect alignment of concerns to projects, but it's a dramatically simpler approach saving hundreds of commits that can be readily adopted by any user and is recommended for skeleton-based projects.
+It's not a perfect alignment of concerns to projects, but it's a dramatically simpler approach saving hundreds of commits that can be readily adopted by any user and is strongly recommended for skeleton-based projects.
 
 # Challenges
 
