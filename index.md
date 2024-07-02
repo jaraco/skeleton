@@ -188,7 +188,7 @@ TWINE_PASSWORD={token} tox -e release
 
 ## Ignoring Artifacts
 
-This project does not include a `.gitignore` module because this project holds the philosophy that it's preferable to specify ignores at the most relevant level, and so .gitignore for a project should specify elements unique to _that project_ and not elements peculiar to the language or system or user.
+This project does not include a `.gitignore` module or provides a very minimal one because this project holds the philosophy that it's preferable to specify ignores at the most relevant level, and so .gitignore for a project should specify elements unique to _that project_ and not elements peculiar to the language or system or user.
 
 Instead, skeleton recommends users to implement ignores for the language(s), system, and user in the development environment. For example, jaraco has the following in `~/.gitconfig`:
 
@@ -202,6 +202,14 @@ Referencing this [`.gitignore_global`](https://github.com/jaraco/dotfiles/blob/m
 As you can see, this file contains all of the commonly encountered ignorables when developing node.js and Python projects using PyCharm or emacs or git on all the common platforms. This simple configuration, linked in each development environment, avoids the need to configure (and sync) each downstream project with the aggregate configuration of jaraco's environments and the environments of each of the contributors to each of the projects the contributiors may touch.
 
 It's not a perfect alignment of concerns to projects, but it's a dramatically simpler approach saving hundreds of commits that can be readily adopted by any user and is strongly recommended for skeleton-based projects.
+
+See [gitignore docs](https://git-scm.com/docs/gitignore) for more details regarding configuring ignore files. For users only incidentally involved with skeleton-derived projects, consider downloading jaraco's `.gitignore_global` to the checked-out project:
+
+```shell
+wget https://raw.githubusercontent.com/jaraco/dotfiles/main/.gitignore_global -O - >> .git/info/exclude
+```
+
+    Note: See [dotfiles](https://docs.github.com/en/codespaces/setting-your-user-preferences/personalizing-github-codespaces-for-your-account#dotfiles) for guidance on applying these settings in GitHub Codespaces.
 
 # Challenges
 
