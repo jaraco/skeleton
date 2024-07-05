@@ -209,7 +209,7 @@ See [gitignore docs](https://git-scm.com/docs/gitignore) for more details regard
 wget https://raw.githubusercontent.com/jaraco/dotfiles/main/.gitignore_global -O - >> .git/info/exclude
 ```
 
-    Note: See [dotfiles](https://docs.github.com/en/codespaces/setting-your-user-preferences/personalizing-github-codespaces-for-your-account#dotfiles) for guidance on applying these settings in GitHub Codespaces.
+Note: See [dotfiles](https://docs.github.com/en/codespaces/setting-your-user-preferences/personalizing-github-codespaces-for-your-account#dotfiles) for guidance on applying these settings in GitHub Codespaces.
 
 # Challenges
 
