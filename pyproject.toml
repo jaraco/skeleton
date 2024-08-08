@@ -43,10 +43,6 @@ doc = [
 	# local
 ]
 
-enabler = [
-	"pytest-enabler >= 2.2",
-]
-
 check = [
 	"pytest-checkdocs >= 2.4",
 	"pytest-ruff >= 0.2.1; sys_platform != 'cygwin'",
@@ -54,6 +50,10 @@ check = [
 
 cover = [
 	"pytest-cov",
+]
+
+enabler = [
+	"pytest-enabler >= 2.2",
 ]
 
 type = [
