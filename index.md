@@ -146,6 +146,8 @@ A pytest.ini is included to define common options around running tests. In parti
 - run doctests on modules and invoke Ruff tests
 - filters out known warnings caused by libraries/functionality included by the skeleton
 
+These checks are non-invasive; they don't automatically modify the code, but merely report on violations. Correct the violations manually or consider running the relevant tools (e.g. `ruff format .` or `ruff check --fix .`). A pre-commit config exists, but due to [maintenance challenges](https://github.com/jaraco/skeleton/issues/109#issuecomment-1932575587) is unsupported (use at your own risk).
+
 ## Continuous Integration
 
 The project is pre-configured to run Continuous Integration tests.
