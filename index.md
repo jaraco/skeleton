@@ -124,6 +124,33 @@ Additionally, the pyproject.toml file declares `[tool.setuptools_scm]`, which en
 - derive the project version from SCM tags
 - ensure that all files committed to the repo are automatically included in releases
 
+
+### Compatibility Modules
+
+Projects relying on `skeleton` are advised to organise their own internal
+polyfills, backports, workarounds and version conditional imports into a
+series of separated modules under the `compat` subpackage.
+These modules provide compatibility layers or shims and often ensure code runs
+smoothly across different Python versions.
+
+Examples of such practice include
+[keyring.compat](https://github.com/jaraco/keyring/blob/main/keyring/compat/),
+[zipp.compat](https://github.com/jaraco/zipp/blob/main/zipp/compat), and
+[setuptools.compat](https://github.com/pypa/setuptools/tree/main/setuptools/compat).
+
+In the case of shims and conditional imports that depend on specific versions
+of the interpreter, the module name should reflect the Python version that requires the
+legacy behavior. For example, the module `setuptools.compat.py312` supports
+compatibility with Python 3.12 and earlier.
+This naming convention is beneficial because it signals when the code
+can be removed. When support for Python 3.12 is dropped
+(i.e., when `requires-python = ">=3.13"` is added to `pyproject.toml`),
+imports of the module `py312` will be easily identifiable as removable debt.
+
+Please note that these modules are implementation details and -
+*unless explicitly documented otherwise by each particular project* - not part of the public API.
+
+
 ## Running Tests
 
 The skeleton assumes the developer has [tox](https://pypi.org/project/tox) installed. The developer is expected to run `tox` to run tests on the current Python version using [pytest](https://pypi.org/project/pytest).
