@@ -3,9 +3,10 @@ extend = "pyproject.toml"
 
 [lint]
 extend-select = [
-	"C901",
-	"PERF401",
-	"W",
+	"C901", # complex-structure
+	"I", # isort
+	"PERF401", # manual-list-comprehension
+	"W", # pycodestyle Warning
 ]
 ignore = [
 	# https://docs.astral.sh/ruff/formatter/#conflicting-lint-rules
@@ -24,6 +25,10 @@ ignore = [
 	"ISC001",
 	"ISC002",
 ]
+
+[lint.isort]
+combine-as-imports = true
+split-on-trailing-comma = false
 
 [format]
 # Enable preview to get hugged parenthesis unwrapping and other nice surprises
