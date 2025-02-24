@@ -3,6 +3,8 @@ extend = "pyproject.toml"
 
 [lint]
 extend-select = [
+	# upstream
+ 
 	"C901",
 	"PERF401",
 	"W",
@@ -22,6 +24,8 @@ extend-select = [
 	# local
 ]
 ignore = [
+	# upstream
+ 
 	# Typeshed rejects complex or non-literal defaults for maintenance and testing reasons,
 	# irrelevant to this project.
 	"PYI011", # typed-argument-default-in-stub
