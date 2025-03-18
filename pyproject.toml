@@ -43,9 +43,13 @@ doc = [
 	# local
 ]
 
+ruff = [
+	# Get requires-python from pyproject.toml automatically astral-sh/ruff#16319
+	"ruff >= 0.11.0",
+]
+
 check = [
 	"pytest-checkdocs >= 2.4",
-	"pytest-ruff >= 0.2.1; sys_platform != 'cygwin'",
 ]
 
 cover = [

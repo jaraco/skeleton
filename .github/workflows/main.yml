@@ -30,6 +30,15 @@ env:
 
 
 jobs:
+  ruff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/ruff-action@v3
+      - run: ruff format --check --diff
+        # Show formatting issues even if the "check" step failed
+        if: ${{ !cancelled() }}
+
   test:
     strategy:
       # https://blog.jaraco.com/efficient-use-of-ci-resources/
@@ -96,13 +105,11 @@ jobs:
 
   check:  # This job does nothing and is only used for the branch protection
     if: always()
-
     needs:
-    - test
-    - collateral
-
+      - ruff
+      - test
+      - collateral
     runs-on: ubuntu-latest
-
     steps:
     - name: Decide whether the needed jobs succeeded or failed
       uses: re-actors/alls-green@release/v1
