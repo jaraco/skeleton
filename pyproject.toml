@@ -51,6 +51,8 @@ doc = [
 check = [
 	"pytest-checkdocs >= 2.14",
 	"pytest-ruff >= 0.2.1; sys_platform != 'cygwin'",
+	# Deprecated rules must now be selected by exact rule code
+	"ruff >= 0.13; sys_platform != 'cygwin'",
 ]
 
 cover = [
@@ -64,7 +66,7 @@ enabler = [
 type = [
 	# upstream
 	
-    # Exclude PyPy from type checks (python/mypy#20454 jaraco/skeleton#187)
+	# Exclude PyPy from type checks (python/mypy#20454 jaraco/skeleton#187)
 	"pytest-mypy >= 1.0.1; platform_python_implementation != 'PyPy'",
 
 	# local
