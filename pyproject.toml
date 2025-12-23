@@ -63,10 +63,9 @@ enabler = [
 
 type = [
 	# upstream
-	"pytest-mypy >= 1.0.1",
-
-	## workaround for python/mypy#20454
-	"mypy < 1.19; python_implementation == 'PyPy'",
+	# static type checking doesn't need to be run on PyPy.
+	# This also prevents sudden unexpected failure from incompatibilities
+	"pytest-mypy >= 1.0.1; platform_python_implementation != 'PyPy'",
 
 	# local
 ]
