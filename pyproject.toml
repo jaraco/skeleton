@@ -49,7 +49,6 @@ doc = [
 ]
 
 check = [
-	# Satisfy deprecation warning introduced in docutils 0.22
 	"pytest-checkdocs >= 2.14",
 	"pytest-ruff >= 0.2.1; sys_platform != 'cygwin'",
 ]
