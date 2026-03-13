@@ -63,8 +63,8 @@ enabler = [
 
 type = [
 	# upstream
-	# static type checking doesn't need to be run on PyPy.
-	# This also prevents sudden unexpected failure from incompatibilities
+	
+    # Exclude PyPy from type checks (python/mypy#20454 jaraco/skeleton#187)
 	"pytest-mypy >= 1.0.1; platform_python_implementation != 'PyPy'",
 
 	# local
