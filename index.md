@@ -92,16 +92,14 @@ The archive and handoff branches from prior collapses are indicate here:
 
 The features/techniques employed by the skeleton include:
 
-- PEP 517/518-based build relying on Setuptools as the build tool
+- Standards-based build relying on Setuptools as the build tool
 - Setuptools declarative configuration using pyproject.toml
 - tox for running tests
 - A README.rst as reStructuredText with some popular badges, but with Read the Docs badges commented out
-- A CHANGES.rst file intended for publishing release notes about the project
+- A NEWS.rst file intended for publishing release notes about the project, constructed from Towncrier RST fragments
 - Use of [Ruff](https://github.com/astral-sh/ruff) for linting and formatting
 - Integrated type checking through [mypy](https://github.com/python/mypy/)
-- Dependabot enabled to enable supply chain security
 - Use of [diff-cover](https://pypi.org/project/diff-cover) to encourage test coverage
-- Release notes managed using towncrier RST fragments
 
 ## Packaging Conventions
 
