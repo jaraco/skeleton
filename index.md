@@ -1,6 +1,6 @@
 # Overview
 
-This project is merged with [skeleton](https://github.com/jaraco/skeleton). What is skeleton? It's the scaffolding of a Python project jaraco [introduced in this blog](https://blog.jaraco.com/a-project-skeleton-for-python-projects/). It seeks to provide a means to re-use techniques and inherit advances when managing projects for distribution.
+This project is merged with [skeleton](https://github.com/jaraco/skeleton). What is skeleton? It's the scaffolding of a Python project jaraco [introduced in this blog](https://blog.jaraco.com/a-project-skeleton-for-python-projects/). The skeleton provides a system for Python projects to re-use techniques and inherit advances when maintaining and publishing.
 
 ## An SCM-Managed Approach
 
@@ -13,6 +13,10 @@ The primary advantage to using an SCM for maintaining these techniques is that t
 Another advantage to using an SCM-managed approach is that tools like GitHub recognize that a change in the skeleton is the _same change_ across all projects that merge with that skeleton. Without the ancestry, with a traditional copy/paste approach, a [commit like this](https://github.com/jaraco/skeleton/commit/12eed1326e1bc26ce256e7b3f8cd8d3a5beab2d5) would produce notifications in the upstream project issue for each and every application, but because it's centralized, GitHub provides just the one notification when the change (and its commit hash) is added to the skeleton.
 
 Yet another advantage is the ability to manage common concerns in a common repo. Concerns that apply to the best practices or other concerns managed by skeleton can be filed, tracked, and resolved in the skeleton issue tracker.
+
+## Alternatives
+
+An alternative to maintaining this boilerplate in a shared repo is not to have the boilerplate at all, a concept implemented by the [Coherent System](/coherent-oss/system).
 
 # Usage
 
