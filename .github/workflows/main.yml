@@ -51,26 +51,12 @@ jobs:
           platform: ubuntu-latest
         - python: pypy3.10
           platform: ubuntu-latest
-    runs-on: ${{ matrix.platform }}
+    uses: ./.github/workflows/test-suite.yml
+    with:
+      python: ${{ matrix.python }}
+      platform: ${{ matrix.platform }}
+    # https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#jobsjob_idcontinue-on-error
     continue-on-error: ${{ matrix.python == '3.15' }}
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install build dependencies
-        # Install dependencies for building packages on pre-release Pythons
-        # jaraco/skeleton#161
-        if: matrix.python == '3.15' && matrix.platform == 'ubuntu-latest'
-        run: |
-          sudo apt update
-          sudo apt install -y libxml2-dev libxslt-dev
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python }}
-          allow-prereleases: true
-      - name: Install tox
-        run: python -m pip install tox
-      - name: Run
-        run: tox
 
   collateral:
     strategy:
@@ -79,19 +65,10 @@ jobs:
         job:
         - diffcov
         - docs
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.x
-      - name: Install tox
-        run: python -m pip install tox
-      - name: Eval ${{ matrix.job }}
-        run: tox -e ${{ matrix.job }}
+    uses: ./.github/workflows/test-suite.yml
+    with:
+      platform: ubuntu-latest
+      tox-env: ${{ matrix.job }}
 
   check:  # This job does nothing and is only used for the branch protection
     if: always()
