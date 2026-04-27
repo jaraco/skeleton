@@ -36,6 +36,7 @@ jobs:
         python:
         - "3.10"
         - "3.13"
+        - "3.13t"
         platform:
         - ubuntu-latest
         - macos-latest
@@ -46,6 +47,8 @@ jobs:
         - python: "3.12"
           platform: ubuntu-latest
         - python: "3.14"
+          platform: ubuntu-latest
+        - python: "3.14t"
           platform: ubuntu-latest
         - python: "3.15"
           platform: ubuntu-latest
