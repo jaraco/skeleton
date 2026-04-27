@@ -101,6 +101,7 @@ The features/techniques employed by the skeleton include:
 - Integrated type checking through [mypy](https://github.com/python/mypy/)
 - Dependabot enabled to enable supply chain security
 - Use of [diff-cover](https://pypi.org/project/diff-cover) to encourage test coverage
+- Release notes managed using towncrier RST fragments
 
 ## Packaging Conventions
 
