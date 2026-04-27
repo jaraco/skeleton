@@ -15,19 +15,6 @@ on:
 permissions:
   contents: read
 
-env:
-  # Environment variable to support color support (jaraco/skeleton#66)
-  FORCE_COLOR: 1
-
-  # Suppress noisy pip warnings
-  PIP_DISABLE_PIP_VERSION_CHECK: 'true'
-  PIP_NO_WARN_SCRIPT_LOCATION: 'true'
-
-  # Ensure tests can sense settings about the environment
-  TOX_OVERRIDE: >-
-    testenv.pass_env+=GITHUB_*,FORCE_COLOR
-
-
 jobs:
   test:
     strategy:
