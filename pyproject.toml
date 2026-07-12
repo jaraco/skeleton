@@ -51,8 +51,6 @@ doc = [
 check = [
 	"pytest-checkdocs >= 2.14",
 	"pytest-ruff >= 0.2.1; sys_platform != 'cygwin'",
-	# Deprecated rules must now be selected by exact rule code
-	"ruff >= 0.13; sys_platform != 'cygwin'",
 ]
 
 cover = [
