@@ -16,6 +16,12 @@ on:
           Tox environment to run; if empty, runs default tox
         type: string
         default: ""
+      continue-on-error:
+        description: >-
+          Whether a failure of this run should be tolerated
+          (e.g. for pre-release Pythons)
+        type: boolean
+        default: false
 
 env:
   # Environment variable to support color support (jaraco/skeleton#66)
@@ -32,6 +38,7 @@ env:
 jobs:
   run:
     runs-on: ${{ inputs.platform }}
+    continue-on-error: ${{ inputs.continue-on-error }}
     permissions:
       contents: read
     steps:
