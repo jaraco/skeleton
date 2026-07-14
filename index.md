@@ -59,6 +59,18 @@ ruff check --fix .
 
 Record every user-facing change as a [Towncrier](https://towncrier.readthedocs.io/) news fragment under `newsfragments/`; release notes are assembled from these fragments. Name the file using the issue ID (or pull request ID if no relevant issue) and scope (removal, feature, bugfix). If no issue ID is available, use some unique identifier prefixed by a `+` (i.e. `+1dbf102a.feature.rst`).
 
+The file's contents are just the change description. Towncrier derives the issue reference from the filename and appends it, so don't repeat it in the text. For a change tracked in issue 18, write `newsfragments/18.feature.rst`:
+
+```
+Add support for sub-microsecond timings.
+```
+
+which renders as "Add support for sub-microsecond timings. (#18)". For a change with no associated issue, use the `+` form; nothing is appended. In `newsfragments/+sub-us.feature.rst`:
+
+```
+Add support for sub-microsecond timings.
+```
+
 ## Releasing
 
 When main is stable, cut a release from main using `tox -e finalize`, which will assemble and commit the release notes and tag the commit. Push that commit to release to PyPI using GitHub Actions.
