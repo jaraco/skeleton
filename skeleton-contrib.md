@@ -2,6 +2,8 @@
 
 This guidance applies to changes to the skeleton project *itself*. Because the skeleton's history is merged into each of its downstream consumers, contributions here carry extra constraints.
 
+The source for this page lives on the `gh-pages` branch of `jaraco/skeleton` (as `skeleton-contrib.md`); the rendered form is published at <https://blog.jaraco.com/skeleton>.
+
 ## Validation
 
 There are no checks or tests. Consider validating any changes with some downstream project first and then porting (or cherry-picking) the commit to skeleton.
