@@ -28,7 +28,7 @@ Moreover, it's not viable to test aspects specific to the skeleton that should n
 
 ## Commit Integrations Mismatch
 
-Github has some nice features to link mentions in commits to issues and pull requests, including taking actions such as closing issues. When applying commits from the skeleton that mention fixing a common concern can [unintentionally affect downstream projects](https://github.com/jaraco/skeleton/issues/87) unless the committer is careful to use project-absolute references (e.g. "jaraco/skeleton#27" vs. "#27").
+Github has some nice features to link mentions in commits to issues and pull requests, including taking actions such as closing issues. Applying commits from the skeleton that mention fixing a common concern can [unintentionally affect downstream projects](https://github.com/jaraco/skeleton/issues/87) unless the committer is careful to use repo-qualified references (e.g. "jaraco/skeleton#27" vs. "#27").
 
 
 ## Version Pinning and Skew
