@@ -31,6 +31,19 @@ env:
 
 jobs:
   run:
+    name: >-
+      ${{
+        format(
+          '{0}🐍{1}@💻{2}',
+          case(
+            inputs.tox-env,
+            format('{0}@', inputs.tox-env),
+            '',
+          ),
+          inputs.python,
+          inputs.platform
+        )
+      }}
     runs-on: ${{ inputs.platform }}
     # Tolerate failures on pre-release Pythons (jaraco/skeleton#199)
     continue-on-error: ${{ inputs.python == '3.15' }}
