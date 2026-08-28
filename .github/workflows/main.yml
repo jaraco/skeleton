@@ -17,6 +17,7 @@ permissions:
 
 jobs:
   test:
+    name: 🧪 Tests${{ '' }}  # nest jobs under the same sidebar category
     strategy:
       # https://blog.jaraco.com/efficient-use-of-ci-resources/
       matrix:
