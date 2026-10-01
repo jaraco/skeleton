@@ -82,7 +82,7 @@ A pytest.ini is included to define common options around running tests. In parti
 - run doctests on modules and invoke Ruff tests
 - filters out known warnings caused by libraries/functionality included by the skeleton
 
-These checks are non-invasive; they don't automatically modify the code, but merely report on violations. Correct the violations manually or consider running the relevant tools (e.g. `ruff format .` or `ruff check --fix .`). A `.pre-commit-config.yaml` also exists, but it is best-effort, non-authoritative, contributor-maintained, and likely stale — because pre-commit requires pinning a `ruff` version, contrary to the skeleton's preference for unpinned versions, it is unsupported (use at your own risk). See [Version Pinning and Skew](challenges.md) for the rationale.
+These checks are non-invasive; they don't automatically modify the code, but merely report on violations. Correct the violations manually or consider running the relevant tools (e.g. `ruff format .` or `ruff check --fix .`). A `.pre-commit-config.yaml` is also provided as a convenience for applying these fixes before commit. It runs `ruff` from the project's own `check` extra (as a local hook), so it uses the same `ruff` version as the authoritative checks rather than a separately pinned one. See [Version Pinning and Skew](challenges.md) for the rationale.
 
 ## Continuous Integration
 
