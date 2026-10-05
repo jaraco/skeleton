@@ -1,0 +1,2 @@
+Add a ``Documentation`` entry to ``[project.urls]``, so the rendered docs on PyPI
+link to the project's documentation.
