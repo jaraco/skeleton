@@ -28,6 +28,7 @@ dynamic = ["version"]
 
 [project.urls]
 Source = "https://github.com/PROJECT_PATH"
+Documentation = "https://PROJECT_RTD.readthedocs.io"
 
 [project.optional-dependencies]
 test = [
