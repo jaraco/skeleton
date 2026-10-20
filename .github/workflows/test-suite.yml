@@ -33,7 +33,7 @@ jobs:
   run:
     runs-on: ${{ inputs.platform }}
     # Tolerate failures on pre-release Pythons (jaraco/skeleton#199)
-    continue-on-error: ${{ inputs.python == '3.15' }}
+    continue-on-error: ${{ inputs.python == '3.16' }}
     permissions:
       contents: read
     steps:
@@ -45,7 +45,7 @@ jobs:
         # (jaraco/skeleton#161) and PyPy, which often lags on wheels
         # (jaraco/skeleton#222).
         if: >-
-          (inputs.python == '3.15' || startsWith(inputs.python, 'pypy'))
+          (inputs.python == '3.16' || startsWith(inputs.python, 'pypy'))
           && inputs.platform == 'ubuntu-latest'
         run: |
           sudo apt update
