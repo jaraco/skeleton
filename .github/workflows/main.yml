@@ -23,7 +23,7 @@ jobs:
         python:
         - "3.11"
         - "3.15"
-        - "3.14t"
+        - "3.15t"
         platform:
         - ubuntu-latest
         - macos-latest
