@@ -29,3 +29,28 @@ The skeleton's issue tracker covers both defects in the skeleton implementation 
 Avoid news fragments in the skeleton. A fragment added here propagates to every downstream project on merge, and the skeleton can only remove it once all of them have rendered and deleted their copies — remove it any sooner and late-syncing projects never receive it. That is an unbounded coordination burden.
 
 If a fragment is truly unavoidable, it must be anonymous (a `+` filename). A numbered fragment makes towncrier emit a bare `#N` that resolves against each downstream repository rather than the skeleton, and — per the rule above — a fragment cannot carry a repo-qualified reference.
+
+## Ignoring Artifacts
+
+This project does not include a `.gitignore` module or provides a very minimal one because this project holds the philosophy that it's preferable to specify ignores at the most relevant level, and so .gitignore for a project should specify elements unique to _that project_ and not elements peculiar to the language or system or user.
+
+Instead, skeleton recommends users to implement ignores for the language(s), system, and user in the development environment. For example, jaraco has the following in `~/.gitconfig`:
+
+```
+[core]
+  excludesfile = ~/.gitignore_global
+```
+
+Referencing this [`.gitignore_global`](https://github.com/jaraco/dotfiles/blob/main/.gitignore_global).
+
+As you can see, this file contains all of the commonly encountered ignorables when developing node.js and Python projects using PyCharm or emacs or git on all the common platforms. This simple configuration, linked in each development environment, avoids the need to configure (and sync) each downstream project with the aggregate configuration of jaraco's environments and the environments of each of the contributors to each of the projects the contributiors may touch.
+
+It's not a perfect alignment of concerns to projects, but it's a dramatically simpler approach saving hundreds of commits that can be readily adopted by any user and is strongly recommended for skeleton-based projects.
+
+See [gitignore docs](https://git-scm.com/docs/gitignore) for more details regarding configuring ignore files. For users only incidentally involved with skeleton-derived projects, consider downloading jaraco's `.gitignore_global` to the checked-out project:
+
+```shell
+wget https://raw.githubusercontent.com/jaraco/dotfiles/main/.gitignore_global -O - >> .git/info/exclude
+```
+
+Note: See [dotfiles](https://docs.github.com/en/codespaces/setting-your-user-preferences/personalizing-github-codespaces-for-your-account#dotfiles) for guidance on applying these settings in GitHub Codespaces.
